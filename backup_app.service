@@ -1,0 +1,17 @@
+[Unit]
+Description=rsnapshot_web_app Flask Service
+After=network.target
+
+[Service]
+Type=simple
+# Run as root for now (you said you’ll install Flask under root Python)
+User=root
+# Where your app.py lives
+WorkingDirectory=~/rsnapshot_web_app
+# Full path to your Python interpreter and app
+ExecStart=/usr/bin/python3 /path/to/rsnapshot_web_app/app.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
